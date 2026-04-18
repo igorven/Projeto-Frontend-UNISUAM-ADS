@@ -4,6 +4,12 @@ body {
     background-size: cover;
 }
 
+.container{
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+}
+
 label {
     padding: 10px;
                 
