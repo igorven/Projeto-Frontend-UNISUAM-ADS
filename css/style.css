@@ -1,21 +1,54 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(159, 160, 160);
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
     background-size: cover;
+}
+
+div {
+    margin-top: 15px;
+    text-align: center;
 }
 
 .container{
     padding: 10px;
-    background: white;
-    border-radius: 5px;
+    background: #fff ;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0,0,10px rgba(0,0,0,0.1);
 }
 
-label {
-    padding: 10px;
+input, label {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+
 }
 
 input {
-
+    border: 1px solid #ccc;
     padding: 10px;
+    border-radius: 4px;
+}
 
+button {
+    padding: 10px;
+    background: #007BFF;
+    color:#fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.hover{
+    background: #0056b3;
+}
+
+.historico{
+    text-align: center;
+    font-size: 12px;
+    margin-top: 20px;
+    color: #666;
 }
