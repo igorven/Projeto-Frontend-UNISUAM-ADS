@@ -1,60 +1,59 @@
-document.addEventListener("DOMContentLoaded", function()) {
+function validarCPF(cpf) {
+    cpf = cpf.replace(/[^\d]+/g,'');
 
-    function aplicarMascara(elemento, callback) {
-        elemento.addEventListener('input', function(e) {
-            e.target.value = callback(e.target.value);
+    if(cpf.length !==11 || /^(\d)\1+$/.test(cpf)) return false;
 
-            // == localStorage (salvar ao digitar) == //
-            localStorage.setItem("form_" + e.target.id, e.target.value); 
-            });
-        }
+    let soma = 0;
+    let resto;
+
+    for (let i = 1; i <+9; i++)
+        soma += parseInt(cpf.substring(i-1, i)) * (11 - i);
+
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.substring(9, 10))) return false;
+
+    soma = 0;
+    for (let i = 1; i <= 10; i++)
+        soma += parseInt(cpf.substring(i-1, i) * (12 - i));
+
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+
+    return resto === parseInt(cpf.substring(10, 11));
+}
+
+function validarCEP(cep) {
+    return /^[0-9]{8}$$/.test(cep);
+}
+
+function validar(){
+    const cpf = document.getElementById("cpf").value;
+    const cep = document.getElementById("cep").value;
+
+    const cpfErro = document.getElementById("cpfErro");
+    const cepErro = document.getElementById("cepErro");
+    const mensagem = document.getElementById("mensagem");
+
+    cpfErro.textContent = "";
+    cepErro.textContent = "";
+    mensagem.textContent = "";
+
+    let valido = true;
+
+    if(!validarCPF(cpf)) {
+        cpfErro.textContent = "CEP inválido (use 8 números)";
+        valido = false;
     }
 
-    aplicarMascara(document.getElementById('cpf'), function(v) {
+    if (!validarCEP(cep)) {
+        cepErro.textContent = "CEP inválido (use 8 números)"
+        valido = false;
+    }
 
-        v= v.replace(/\D/g,'');
-        v= v.replace(/(\d{3})(\d)/, '$1.$2');
-        v= v.replace(/(\d{3})(\d)/, '$1.$2');
-        v= v.replace(/(\d{3})(\d{1,2})$/, '$1.$2');
-        return v;
-    });
+    if (valido) {
+        mensagem.textContent = "Cadastro realizado com sucesso!"
+        mensagem.className = "sucesso";
+    }
 
-    aplicarMascara(document.getElementById('celular'), function(v) {
-
-        v= v.replace(/\D/g, '');
-        v= v.replace(/^(\d{2})(\d)/g, '($1)$2');
-        v= v.replace(/(\d{5})(\d)/, '$1-$2');
-        return v;
-    })
-
-    aplicarMascara(document.getElementById('cep'), function(v) {
-
-        v= v.replace(/\D/g, '');
-
-    })
-
-    document.getElementById('cep').addEventListener('blur', function()) {
-
-        let cep = this.value.replace(/\D/g, '');
-
-        if(cep.length === 8) {
-            fetch (https://viacep.com.br/ws/${cep}/json/)
-                .then(res => res.json())
-                .then(data => {
-                    if (!data.erro) {
-                        document.getElementById('bairro').value = data.bairro ||'';
-
-                        document.getElementById('endereco').value = data.logradouro ||'';
-
-                        // == localStorage (salvar auto-preenchidos) == //
-                        localStorage.setItem("form_bairro", data.bairro ||'');
-
-                        localStorage.setItem("form_endereco", data.logradouro ||'');
-                        
-                    }
-                })
-                .catch(() => {
-                    console.error("Erro ao buscar CEP");
-                });
-        };
-    };
+}
