@@ -12,7 +12,7 @@
     <div class="container">
         <h2>Cadastro</h2>
 
-        <form action="" method="post" onsubmit="return validarCPF()">
+        <form>
 
             <label>Nome:</label>
             <input type="text" name="nome" required>
@@ -22,12 +22,14 @@
 
             <label>CPF:</label>
             <input type="text" id="cpf" name="cpf" required>
+            <div id = "cpfErro" class="erro"></div>
 
             <label>Celular:</label>
             <input type="tel" id="celular" name="celular" required>
 
             <label>CEP:</label>
             <input type="text" id="cep" name="cep" required>
+            <div id="cepErro" class="erro"></div>
 
             <label>Bairro:</label>
             <input type="text" id="bairro" name="bairro" required>
@@ -35,7 +37,9 @@
             <label>Endereço:</label>
             <input type="text" id="endereco" name="endereco" required>
 
-            <button type="submit">Enviar</button>
+            <button type="submit" onclick="validar()">Cadastrar</button>
+
+            <div id="mensagem"></div>
 
         </form>
     </div>
