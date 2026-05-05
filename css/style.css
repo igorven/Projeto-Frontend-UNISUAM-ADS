@@ -46,9 +46,12 @@ button.hover{
     background: #0056b3;
 }
 
-.historico{
-    text-align: center;
+.erro {
+
+    color: red;
     font-size: 12px;
-    margin-top: 20px;
-    color: #666;
+}
+
+.sucesso {
+    color: green;
 }
