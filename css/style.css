@@ -1,23 +1,24 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     background-size: cover;
 }
 
-div {
-    margin-top: 15px;
+h2 {
     text-align: center;
 }
 
 .container{
-    padding: 10px;
     background: #fff ;
     border-radius: 8px;
-    padding: 20px;
-    max-width: 500px;
+    padding: 25px;
+    width: 350px;
     margin: auto;
-    box-shadow: 0,0,10px rgba(0,0,0,0.1);
+    box-shadow: 0,0,10px rgba(0,0,0,0.2);
 }
 
 input, label {
@@ -28,7 +29,6 @@ input, label {
 }
 
 input {
-    border: 1px solid #ccc;
     padding: 10px;
     border-radius: 4px;
 }
@@ -46,12 +46,21 @@ button.hover{
     background: #0056b3;
 }
 
-.erro {
-
-    color: red;
-    font-size: 12px;
+.input-success{
+    border: 2px solid green;
 }
 
-.sucesso {
+.input-erro {
+    border: 2px solid red ;
+}
+
+.erro {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.success {
     color: green;
+    margin-bottom: 3px;
 }
