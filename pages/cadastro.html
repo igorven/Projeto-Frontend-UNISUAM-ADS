@@ -14,32 +14,49 @@
 
         <form>
 
-            <label>Nome:</label>
-            <input type="text" name="nome" required>
+            <label>Nome completo:</label>
+            <input type="text" id="nome" name="nome" >
+            <div id="nomemsg"></div>
 
-            <label>E-mail:</label>
-            <input type="email" name="email" required>
-
-            <label>CPF:</label>
-            <input type="text" id="cpf" name="cpf" required>
-            <div id = "cpfErro" class="erro"></div>
+            <label>Nome materno:</label>
+            <input type="text" id="mothername" name="mothername">
+            <div id="mothernamemsg"></div>
 
             <label>Celular:</label>
-            <input type="tel" id="celular" name="celular" required>
+            <input type="tel" id="celular" name="celular">
+            <div id="cellmsg"></div>
+
+            <label>E-mail:</label>
+            <input type="email" id="email" name="email">
+            <div id="emailmsg"></div>
+
+            <label>Senha:</label>
+            <input type="password" id="password" name="password">
+            <div id="passwordmsg"></div>
+
+            <label>Confirmar senha:</label>
+            <input type="password" id="confirmpassword" name="confirmpassword">
+            <div id="confirmpasswordmsg"></div>
+
+            <label>CPF:</label>
+            <input type="text" id="cpf" name="cpf" placeholder="XXX.XXX.XXX-XX">
+            <div id = "cpfmsg"></div>
 
             <label>CEP:</label>
-            <input type="text" id="cep" name="cep" required>
-            <div id="cepErro" class="erro"></div>
+            <input type="text" id="cep" name="cep" placeholder="XXXXX-XXX">
+            <div id="cepmsg"></div>
 
             <label>Bairro:</label>
-            <input type="text" id="bairro" name="bairro" required>
+            <input type="text" id="bairro" name="bairro">
 
-            <label>Endereço:</label>
-            <input type="text" id="endereco" name="endereco" required>
+            <label>Rua:</label>
+            <input type="text" id="rua" name="rua">
+
+            <label>Cidade:</label>
+            <input type="text" id="cidade" name="cidade">
 
             <button type="submit" onclick="validar()">Cadastrar</button>
-
-            <div id="mensagem"></div>
+            <div id="buttonmsg"></div>
 
         </form>
     </div>
