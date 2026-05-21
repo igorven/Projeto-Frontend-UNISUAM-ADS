@@ -184,18 +184,28 @@ function validar() {
 
     if (!validarTelefone(celular)) {
         celularmsg.textContent = "Número de telefone inválido! Use o DDD + número.";
+        celularmsg.className = "erro"
+        celularmsg.classList.add("input-erro")
         valido = false;
+    }
+
+    else{
+        celularmsg.className = "success"
+        celularmsg.classList.add("input-success")
+        celularmsg.classList.remove("input-erro")
     }
 
     if (!validarCPF(cpf)) {
         cpfmsg.textContent = "CEP inválido (use 8 números)";
-        cpfmsg.className = "erro"
-        cpfmsg.classList.add("input-erro")
+        cpfmsg.className = "erro";
+        cpfmsg.classList.add("input-erro");
         valido = false;
     }
 
     else {
-        cpf
+        cpfmsg.className = "success";
+        cpfmsg.classList.add("input-success");
+        cpfmsg.classList.remove("input-erro");
     }
 
     if (valido) {
