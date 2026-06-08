@@ -1,16 +1,29 @@
 /*== Elementos do formulário de cadastro ==*/
-const nome = document.getElementById("name").value;
-const mothername = document.getElementById("mothername").value;
-const celular = document.getElementById("celular").value
-const cpf = document.getElementById("cpf").value;
-const cep = document.getElementById("cep").value;
-const email = document.getElementById("email").value;
-const senha = document.getElementById("password").value;
-const confirmarSenha = document.getElementById("confirmpassword")
+const nome = document.getElementById("name");
+const cpf = document.getElementById("cpf");
+const cep = document.getElementById("cep");
+const email = document.getElementById("email");
+const senha = document.getElementById("password");
+const confirmarSenha = document.getElementById("confirmpassword");
 
 /**== Funções de validação ==*/
 
 /**== CPF ==*/
+
+cpf.addEventListener("blur", () => {
+
+    const cpfmsg = document.getElementById("cpfmsg");
+
+    if(validarCPF(cpf.value)) {
+        cpfmsg.textContent = "CPF válido.";
+        cpfmsg.className = "ok";
+    }
+
+    else {
+        cpfmsg.textContent = ""
+    }
+})
+
 function validarCPF(cpf) {
     cpf = cpf.replace(/[^\d]+/g,'');
 
@@ -19,7 +32,7 @@ function validarCPF(cpf) {
     let soma = 0;
     let resto;
 
-    for (let i = 1; i <+9; i++)
+    for (let i = 1; i <=9; i++)
         soma += parseInt(cpf.substring(i-1, i)) * (11 - i);
 
     resto = (soma * 10) % 11;
@@ -28,7 +41,7 @@ function validarCPF(cpf) {
 
     soma = 0;
     for (let i = 1; i <= 10; i++)
-        soma += parseInt(cpf.substring(i-1, i) * (12 - i));
+        soma += parseInt(cpf.substring(i-1, i)) * (12 - i);
 
     resto = (soma * 10) % 11;
     if (resto === 10 || resto === 11) resto = 0;
@@ -49,11 +62,11 @@ document.getElementById("cep").addEventListener("blur", function() {
      return; 
     }
 
-    fetch('https://viacep.com.br/ws/${cep}/json')
+    fetch(`https://viacep.com.br/ws/${cep}/json`)
         .then(res => res.json())
         .then(data => {
             if (data.erro) {
-                erro.textContent = "CEP não encontrado.";
+                cepErro.textContent = "CEP não encontrado.";
                 return;
             }
             
@@ -63,7 +76,7 @@ document.getElementById("cep").addEventListener("blur", function() {
         })
         
         .catch(() => {
-            erro.textContent = "Erro ao buscar CEP";
+            cepErro.textContent = "Erro ao buscar CEP";
         });
 })
 
@@ -115,102 +128,4 @@ senha.addEventListener("input",() =>{
     }
 })
 
-/**== Telefone ==*/
-function validarTelefone(celular) {
 
-    const regex = /^\+55\s?\(?([1-9][0-9])\)?\s?(9\d{4}|\d{4})-?\d{4}$/;
-    return regex.test(celular);
-}
- /**== A função que vai mandar mensagens de erro se a condição de qualquer função de verificação não for verdadeira ==*/   
-function validar() {
-    
-    const nomemsg = document.getElementById("nomemsg")
-    const mothernamemsg = document.getElementById("mothernamemsg");
-    const emailmsg = document.getElementById("emailmsg");
-    const celularmsg = document.getElementById("cellmsg");
-    const senhamsg = document.getElementById("passwordmsg");
-    const confirmarSenhamsg = document.getElementById("confirmpasswordmsg");
-    const cpfmsg = document.getElementById("cpfmsg");
-    const buttonmsg = document.getElementById("buttonmsg");
-
-    nomemsg.textContent = "";
-    mothernamemsg.textContent = "";
-    emailmsg.textContent = "";
-    celularmsg.textContent = "";
-    senhamsg.textContent = "";
-    confirmarSenhamsg.textContent = "";
-    celularmsg.textContent = "";
-    cpfmsg.textContent = "";
-    buttonmsg.textContent = "";
-
-    let valido = true;
-
-    if (nome === "") {
-        nomemsg.textContent = "Insira seu nome.";
-        nomemsg.className = "erro";
-        nomemsg.classList.add("input-erro");
-    }
-
-    else {
-        nomemsg.className = "success";
-        nomemsg.classList.add("input-success");
-        nomemsg.classList.remove("input-erro");
-    }
-
-    if (mothername === "") {
-        mothernamemsg.textContent = "Insira o nome materno.";
-        mothernamemsg.className = "erro";
-        mothernamemsg.classList.add(input-erro);
-    }
-
-    else {
-        mothernamemsg.className = "success";
-        mothernamemsg.classList.add("input-success");
-        mothernamemsg.classList.remove("input-erro");
-    }
-
-    if (confirmarSenha !== senha) {
-        confirmarSenhamsg.textContent = "As senhas não coincidem";
-        confirmarSenhamsg.className = "erro";
-        confirmarSenhamsg.classList.add("input-erro");
-        valido = false;
-    }
-
-    else {
-        confirmarSenhamsg.className = "success";
-        confirmarSenhamsg.classList.add("input-success");
-        confirmarSenhamsg.classList.remove("input-erro");
-    }
-
-    if (!validarTelefone(celular)) {
-        celularmsg.textContent = "Número de telefone inválido! Use o DDD + número.";
-        celularmsg.className = "erro"
-        celularmsg.classList.add("input-erro")
-        valido = false;
-    }
-
-    else{
-        celularmsg.className = "success"
-        celularmsg.classList.add("input-success")
-        celularmsg.classList.remove("input-erro")
-    }
-
-    if (!validarCPF(cpf)) {
-        cpfmsg.textContent = "CEP inválido (use 8 números)";
-        cpfmsg.className = "erro";
-        cpfmsg.classList.add("input-erro");
-        valido = false;
-    }
-
-    else {
-        cpfmsg.className = "success";
-        cpfmsg.classList.add("input-success");
-        cpfmsg.classList.remove("input-erro");
-    }
-
-    if (valido) {
-        mensagem.textContent = "Cadastro realizado com sucesso!"
-        mensagem.className = "success";
-    }
-
-}

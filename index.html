@@ -1,30 +1,115 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abrigo dos Animais</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <meta name="description" content="Site sobre adoção e doação de animais">
+    <title>Adoção e Doação de Animais</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script.js"></script>
 </head>
-
 <body>
-    <nav>
-        <!-- LOGO -->
-    <a href="#" class="logo">
-      <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Logo">
-      Abrigo dos Animais
-    </a>
 
-    <!-- MENU -->
-    <ul class="menu">
-      <li><a href="/pages/raças.html">Raças</a></li>
-      <li><a href="/pages/animais.html">Animais Disponíveis</a></li>
-      <li><a href="#">Locais para Adoção</a></li>
-      <li><a href="#">Loja de Ração</a></li>
-      <li><a href="#">Suplementos</a></li>
-      <li><a href="/pages/login.html" class="login">Login</a></li>
-    </ul>
+    <header>
+        <h1>🐾 Adoção e Doação de Animais</h1>
+        <p>Transforme vidas: adote, doe e ajude animais a encontrarem um lar.</p>
+    </header>
+
+    <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#adocao">Adoção</a>
+        <a href="#doacao">Doação</a>
+        <a href="#contato">Contato</a>
     </nav>
-        
+
+    <div class="banner">
+        <h2>Um novo amigo espera por você ❤️</h2>
+    </div>
+
+    <section id="sobre">
+        <h2>Sobre o Projeto</h2>
+        <p>
+            Nosso objetivo é conectar animais que precisam de um lar com pessoas
+            dispostas a oferecer amor, cuidado e proteção.
+        </p>
+    </section>
+
+    <section id="adocao">
+        <h2>Animais para Adoção</h2>
+
+        <div class="cards">
+
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600" alt="Thor">
+
+            <div class="card-content">
+                <h3>Thor</h3>
+                <p>2 anos • Vacinado • Porte médio</p>
+                <a href="#" class="btn">Solicitar Adoção</a>
+            </div>
+        </div>
+
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=600" alt="Luna">
+
+            <div class="card-content">
+                <h3>Luna</h3>
+                <p>1 ano • Castrada • Muito carinhosa</p>
+                <a href="#" class="btn">Solicitar Adoção</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600" alt="Mel">
+
+            <div class="card-content">
+                <h3>Mel</h3>
+                <p>3 anos • Dócil • Porte pequeno</p>
+                <a href="#" class="btn">Solicitar Adoção</a>
+            </div>
+        </div>
+
+    </div>
+
+        </div>
+    </section>
+
+    <section id="doacao">
+        <h2>Cadastro para Doação</h2>
+
+        <form>
+            <input type="text" placeholder="Nome" required>
+            <input type="tel" placeholder="Telefone" required>
+
+            <select required>
+                <option value="">Tipo de Animal</option>
+                <option>Cachorro</option>
+                <option>Gato</option>
+                <option>Outro</option>
+            </select>
+
+            <textarea rows="5" placeholder="Descrição do animal"></textarea>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+
+        <form>
+            <input type="text" placeholder="Nome">
+            <input type="email" placeholder="E-mail">
+            <textarea rows="5" placeholder="Mensagem"></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Adoção e Doação de Animais</p>
+    </footer>
+
 </body>
 </html>

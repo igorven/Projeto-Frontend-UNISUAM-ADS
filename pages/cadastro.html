@@ -6,6 +6,7 @@
     <meta name="description" content="Cadastro do usuário">
     <title>Cadastro</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/validaCadastro.js" defer></script>
 </head>
 <body>
     
@@ -15,27 +16,19 @@
         <form>
 
             <label>Nome completo:</label>
-            <input type="text" id="nome" name="nome" >
+            <input type="text" id="nome" placeholder="Ex.: João Silva" >
             <div id="nomemsg"></div>
 
-            <label>Nome materno:</label>
-            <input type="text" id="mothername" name="mothername">
-            <div id="mothernamemsg"></div>
-
-            <label>Celular:</label>
-            <input type="tel" id="celular" name="celular">
-            <div id="cellmsg"></div>
-
             <label>E-mail:</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" placeholder="joao.silva@gmail.com">
             <div id="emailmsg"></div>
 
             <label>Senha:</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" placeholder="Digite sua senha.">
             <div id="passwordmsg"></div>
 
             <label>Confirmar senha:</label>
-            <input type="password" id="confirmpassword" name="confirmpassword">
+            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Digite sua senha novamente.">
             <div id="confirmpasswordmsg"></div>
 
             <label>CPF:</label>
@@ -55,13 +48,16 @@
             <label>Cidade:</label>
             <input type="text" id="cidade" name="cidade" readonly>
 
+            <label>Estado:</label>
+            <input type="text" id="uf" name="estado" readonly>
+
             <button type="submit" onclick="validar()">Cadastrar</button>
             <div id="buttonmsg"></div>
 
         </form>
     </div>
 
-    <script src="../js/validaCadastro.js"></script>
+    
 
 </body>
 </html>
