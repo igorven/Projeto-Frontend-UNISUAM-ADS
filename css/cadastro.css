@@ -1,0 +1,256 @@
+.cadastro-container{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #88ad89,
+        #2E7D32
+    );
+}
+
+.cadastro-card{
+
+    width:100%;
+    max-width:480px;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 15px 40px rgba(
+        0,
+        0,
+        0,
+        .15
+    );
+
+    animation:fade .4s ease;
+}
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* TÍTULOS */
+
+.cadastro-card h1{
+
+    text-align:center;
+
+    color:#2E7D32;
+
+    font-size:2rem;
+
+    margin-bottom:5px;
+}
+
+.cadastro-card h2{
+
+    text-align:center;
+
+    color:#333;
+
+    margin-bottom:5px;
+}
+
+.subtitulo{
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:.9rem;
+
+    margin-bottom:20px;
+}
+
+/* GRID */
+
+.linha{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:15px;
+}
+
+/* CAMPOS */
+
+.campo{
+
+    margin-bottom:12px;
+}
+
+.campo label{
+
+    display:block;
+
+    margin-bottom:5px;
+
+    color:#444;
+
+    font-weight:600;
+}
+
+.campo input{
+
+    width:100%;
+
+    padding:10px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:14px;
+
+    transition:.3s;
+}
+
+.campo input:focus{
+
+    outline:none;
+
+    border-color:#4CAF50;
+
+    box-shadow:
+    0 0 8px rgba(
+        76,
+        175,
+        80,
+        .25
+    );
+}
+
+.campo input[readonly]{
+
+    background:#f7f7f7;
+
+    cursor:not-allowed;
+}
+
+/* ERROS */
+
+.erro{
+
+    display:block;
+
+    min-height:18px;
+
+    color:#e53935;
+
+    font-size:12px;
+
+    margin-top:3px;
+}
+
+/* MENSAGEM */
+
+.mensagem{
+
+    text-align:center;
+
+    min-height:25px;
+
+    margin:12px 0;
+
+    font-weight:bold;
+}
+
+/* BOTÃO */
+
+.cadastro-card button{
+
+    width:100%;
+
+    border:none;
+
+    background:#4CAF50;
+
+    color:white;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.cadastro-card button:hover{
+
+    background:#2E7D32;
+}
+
+/* LINK VOLTAR */
+
+.voltar{
+
+    text-align:center;
+
+    margin-top:15px;
+}
+
+.voltar a{
+
+    color:#2E7D32;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
+
+.voltar a:hover{
+
+    text-decoration:underline;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:600px){
+
+    .cadastro-card{
+
+        padding:20px;
+    }
+
+    .linha{
+
+        grid-template-columns:
+        1fr;
+    }
+
+    .cadastro-card h1{
+
+        font-size:1.8rem;
+    }
+
+}
