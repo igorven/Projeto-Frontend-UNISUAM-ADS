@@ -1,112 +1,276 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetLar</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>PetLar - Adoção de Animais</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <header>
-        <h1>🐾 Adoção e Doação de Animais</h1>
-        <p>Transforme vidas: adote, doe e ajude animais a encontrarem um lar.</p>
-    </header>
+<header>
+    <h1>🐾 PetLar</h1>
+    <p>Encontre um amigo para a vida toda.</p>
+</header>
 
-    <nav>
-        <a href="#sobre">Sobre</a>
-        <a href="#adocao">Adoção</a>
-        <a href="#doacao">Doação</a>
-        <a href="#contato">Contato</a>
-    </nav>
+<nav>
 
-    <div class="banner">
-        <h2>Um novo amigo espera por você ❤️</h2>
+    <div class="logo">
+        🐾 PetLar
     </div>
 
-    <section id="sobre">
-        <h2>Sobre o Projeto</h2>
+    <div class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#adocao">Animais</a>
+        <a href="#queroAdotar">Quero Adotar</a>
+        <a href="#jaAdotados">Já Adotados</a>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <div class="acoes">
+
+        <span id="usuarioLogado">
+            Visitante
+        </span>
+
+        <button class="btn-login" onclick="window.location.href='pages/login.html'">
+            Login
+        </button>
+
+        <button
+            id="btnLogout"
+            onclick="logout()">
+            Sair
+        </button>
+
+    </div>
+
+</nav>
+
+<section id="inicio" class="banner">
+
+    <div>
+
+        <h2>
+            Um novo amigo espera por você ❤️
+        </h2>
+
         <p>
-            Nosso objetivo é conectar animais que precisam de um lar com pessoas
-            dispostas a oferecer amor, cuidado e proteção.
+            Adote, cuide e transforme vidas.
         </p>
-    </section>
 
-    <section id="adocao">
-        <h2>Animais para Adoção</h2>
+        <a href="#adocao" class="btn">
+            Ver Animais
+        </a>
 
-        <div class="cards">
+    </div>
 
-          <div class="card">
+</section>
+
+<section id="adocao">
+
+    <h2>Animais Disponíveis</h2>
+
+    <div class="filtros">
+
+        <input
+            type="text"
+            id="pesquisa"
+            placeholder="Pesquisar animal..."
+        >
+
+        <select id="filtro">
+
+            <option value="todos">Todos</option>
+            <option value="cachorro">Cachorros</option>
+            <option value="gato">Gatos</option>
+            <option value="outro">Outros</option>
+
+        </select>
+
+    </div>
+
+    <div class="cards">
+
+        <!-- CACHORROS -->
+
+        <div class="card cachorro">
             <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600" alt="Thor">
 
-            <div class="card-content">
+            <div class="info">
                 <h3>Thor</h3>
-                <p>2 anos • Vacinado • Porte médio</p>
-                <a href="#" class="btn">Solicitar Adoção</a>
+                <p>2 anos • Porte Médio • Vacinado</p>
+
+                <button onclick="queroAdotar('Thor')">
+                    Quero Adotar
+                </button>
             </div>
         </div>
 
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=600" alt="Luna">
-
-            <div class="card-content">
-                <h3>Luna</h3>
-                <p>1 ano • Castrada • Muito carinhosa</p>
-                <a href="#" class="btn">Solicitar Adoção</a>
-            </div>
-        </div>
-
-        <div class="card">
+        <div class="card cachorro">
             <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600" alt="Mel">
 
-            <div class="card-content">
+            <div class="info">
                 <h3>Mel</h3>
-                <p>3 anos • Dócil • Porte pequeno</p>
-                <a href="#" class="btn">Solicitar Adoção</a>
+                <p>3 anos • Porte Pequeno • Dócil</p>
+
+                <button onclick="queroAdotar('Mel')">
+                    Quero Adotar
+                </button>
+            </div>
+        </div>
+
+        <div class="card cachorro">
+            <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=600" alt="Max">
+
+            <div class="info">
+                <h3>Max</h3>
+                <p>4 anos • Porte Grande • Vacinado</p>
+
+                <button onclick="queroAdotar('Max')">
+                    Quero Adotar
+                </button>
+            </div>
+        </div>
+
+        <div class="card cachorro">
+            <img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?w=600" alt="Rex">
+
+            <div class="info">
+                <h3>Rex</h3>
+                <p>2 anos • Muito brincalhão</p>
+
+                <button onclick="queroAdotar('Rex')">
+                    Quero Adotar
+                </button>
+            </div>
+        </div>
+
+        <!-- GATOS -->
+
+        <div class="card gato">
+            <img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=600" alt="Luna">
+
+            <div class="info">
+                <h3>Luna</h3>
+                <p>1 ano • Castrada • Carinhosa</p>
+
+                <button onclick="queroAdotar('Luna')">
+                    Quero Adotar
+                </button>
+            </div>
+        </div>
+
+        <div class="card gato">
+            <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=600" alt="Mimi">
+
+            <div class="info">
+                <h3>Mimi</h3>
+                <p>2 anos • Brincalhona • Vacinada</p>
+
+                <button onclick="queroAdotar('Mimi')">
+                    Quero Adotar
+                </button>
+            </div>
+        </div>
+
+        <div class="card gato">
+            <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600" alt="Snow">
+
+            <div class="info">
+                <h3>Snow</h3>
+                <p>1 ano • Castrado</p>
+
+                <button onclick="queroAdotar('Snow')">
+                    Quero Adotar
+                </button>
+            </div>
+        </div>
+
+        <!-- OUTROS -->
+
+        <div class="card outro">
+            <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=600" alt="Bolinha">
+
+            <div class="info">
+                <h3>Bolinha</h3>
+                <p>Coelho • 1 ano</p>
+
+                <button onclick="queroAdotar('Bolinha')">
+                    Quero Adotar
+                </button>
+            </div>
+        </div>
+
+        <div class="card outro">
+            <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600" alt="Kiwi">
+
+            <div class="info">
+                <h3>Kiwi</h3>
+                <p>Calopsita • 1 ano</p>
+
+                <button onclick="queroAdotar('Kiwi')">
+                    Quero Adotar
+                </button>
             </div>
         </div>
 
     </div>
 
-        </div>
-    </section>
+</section>
 
-    <section id="doacao">
-        <h2>Cadastro para Doação</h2>
+<section id="queroAdotar">
 
-        <form>
-            <input type="text" placeholder="Nome" required>
-            <input type="tel" placeholder="Telefone" required>
+    <h2>🐾 Quero Adotar</h2>
 
-            <select required>
-                <option value="">Tipo de Animal</option>
-                <option>Cachorro</option>
-                <option>Gato</option>
-                <option>Outro</option>
-            </select>
+    <p id="mensagemQuero">
+        Nenhum animal selecionado.
+    </p>
 
-            <textarea rows="5" placeholder="Descrição do animal"></textarea>
+    <ul id="listaQueroAdotar"></ul>
 
-            <button type="submit">Cadastrar</button>
-        </form>
-    </section>
+</section>
 
-    <section id="contato">
-        <h2>Contato</h2>
+<section id="jaAdotados">
 
-        <form>
-            <input type="text" placeholder="Nome">
-            <input type="email" placeholder="E-mail">
-            <textarea rows="5" placeholder="Mensagem"></textarea>
+    <h2>❤️ Animais Já Adotados</h2>
 
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
+    <p id="mensagemAdotados">
+        Nenhum animal adotado.
+    </p>
 
-    <footer>
-        <p>&copy; 2026 Adoção e Doação de Animais</p>
-    </footer>
+    <ul id="listaAdotados"></ul>
+
+</section>
+
+<section id="sobre">
+
+    <h2>Sobre Nós</h2>
+
+    <p>
+        O PetLar conecta animais que precisam de um lar
+        com pessoas dispostas a oferecer amor e cuidado.
+    </p>
+
+</section>
+
+<section id="contato">
+
+    <h2>Contato</h2>
+
+    <p>Email: contato@petlar.com</p>
+
+    <p>Telefone: (21) 99999-9999</p>
+
+</section>
+
+<footer>
+    <p>© 2026 PetLar - Todos os direitos reservados.</p>
+</footer>
 
 </body>
 </html>
