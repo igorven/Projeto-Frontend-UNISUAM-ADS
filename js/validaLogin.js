@@ -1,7 +1,11 @@
+document.getElementById("formCadastro").addEventListener("submit", (e) => {
+    e.preventDefault();
+});
+
 function login() {
 
-    const email =
-        document.getElementById("email").value;
+    const login =
+        document.getElementById("login").value;
 
     const senha =
         document.getElementById("senha").value;
@@ -16,13 +20,17 @@ function login() {
         return;
     }
 
-    if (usuario.email === email && usuario.senha === senha) {
+    if (usuario.email === login && usuario.senha === senha) {
 
         localStorage.setItem("usuarioLogado", usuario.email);
 
         atualizarUsuario();
 
         mostrarMensagem("mensagemQuero", "Login realizado com sucesso.");
+
+       setTimeout(() => {
+            window.location.href="../index.html";
+       }, 2000); 
 
     } else {
 
@@ -38,7 +46,7 @@ function logout() {
 
     document.getElementById("usuarioLogado").textContent = "Visitante";
 
-    document.getElementById("email").value = "";
+    document.getElementById("login").value = "";
 
     document.getElementById("senha").value = "";
 

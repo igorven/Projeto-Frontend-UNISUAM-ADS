@@ -198,18 +198,18 @@ if (existeCampoVazio) {
         return;
     }
 
-    let usuarios =
-        JSON.parse(localStorage.getItem("usuarios")) || [];
+    let usuario =
+        JSON.parse(localStorage.getItem("usuario")) || [];
 
     // CPF duplicado
-    const cpfExiste = usuarios.some(u => u.cpf === cpf.value);
+    const cpfExiste = usuario.some(u => u.cpf === cpf.value);
     if (cpfExiste) {
         mostrarMensagem("CPF já cadastrado", "red");
         return;
     }
 
     // EMAIL duplicado
-    const emailExiste = usuarios.some(u => u.email === email.value);
+    const emailExiste = usuario.some(u => u.email === email.value);
     if (emailExiste) {
         mostrarMensagem("E-mail já cadastrado", "red");
         return;
@@ -228,9 +228,9 @@ if (existeCampoVazio) {
         senha: senha.value
     };
 
-    usuarios.push(novoUsuario);
+    usuario.push(novoUsuario);
 
-    localStorage.setItem( "usuarios", JSON.stringify(usuarios));
+    localStorage.setItem("usuario", JSON.stringify(usuario));
 
     mostrarMensagem("Cadastro realizado com sucesso!");
 
