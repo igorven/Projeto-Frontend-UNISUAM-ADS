@@ -2,7 +2,8 @@ const form = document.getElementById("formCadastro");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-})
+    cadastrarUsuario();
+});
 
 /*== Elementos do formulário de cadastro ==*/
 const nome = document.getElementById("nome");
@@ -143,7 +144,7 @@ email.addEventListener("input", () => {
 
     else {
         msg.textContent = "E-mail inválido.";
-        msg.classList.remove("input-ok");
+        email.classList.remove("input-ok");
         email.classList.add("input-erro");
     }
 });
@@ -192,9 +193,7 @@ if (existeCampoVazio) {
     }
 
     if (confirmarSenha.value !== senha.value) {
-        confirmarSenha.addEventListener("input", () => {
             mostrarMensagem("As senhas não coincidem", "red");
-        })
         return;
     }
 
