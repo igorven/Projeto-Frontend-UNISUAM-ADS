@@ -1,3 +1,15 @@
+/* Capta o card do animal em específico usando JQuery */
+
+const buttons = document.querySelectorAll(".btn-adotar");
+
+buttons.forEach(btn => {
+
+    btn.addEventListener("click", () =>{
+
+        queroAdotar(btn.dataset.animal);
+    });
+});
+
 /* Pesquisa animais na barra de pesquisa e filtra por cards os tipos de animais */
 
 const search = document.getElementById("pesquisa");
