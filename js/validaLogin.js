@@ -10,19 +10,23 @@ function login() {
     const senha =
         document.getElementById("senha").value;
 
-    const usuario =
-        JSON.parse(localStorage.getItem("usuario"));
+    const usuarios =
+        JSON.parse(localStorage.getItem("usuario")) || [];
 
-    if (!usuario) {
+    const usuarioEncontrado = usuarios.find(
+        u => u.email === login && u.senha === senha
+    );
+
+    if (!usuarioEncontrado) {
 
         mostrarMensagem("mensagemQuero", "Nenhum usuário cadastrado.");
 
         return;
     }
 
-    if (usuario.email === login && usuario.senha === senha) {
+    if (usuarioEncontrado) {
 
-        localStorage.setItem("usuarioLogado", usuario.email);
+        localStorage.setItem("usuarioLogado", usuarioEncontrado.email);
 
         atualizarUsuario();
 
@@ -30,11 +34,11 @@ function login() {
 
        setTimeout(() => {
             window.location.href="../index.html";
-       }, 2000); 
+       }, 500); 
 
     } else {
 
-        mostrarMensagem( "mensagemQuero", "E-mail ou senha incorretos.");
+        mostrarMensagem("mensagemQuero", "E-mail ou senha incorretos.");
 
     }
 
@@ -44,11 +48,15 @@ function logout() {
 
     localStorage.removeItem("usuarioLogado");
 
-    document.getElementById("usuarioLogado").textContent = "Visitante";
+    atualizarUsuario();
 
-    document.getElementById("login").value = "";
+    const login = document.getElementById("login");
 
-    document.getElementById("senha").value = "";
+    const senha = document.getElementById("senha");
+
+    if (login) login.value = "";
+
+    if (senha) senha.value = "";
 
     mostrarMensagem("mensagemQuero", "Logout realizado com sucesso.");
 
@@ -56,22 +64,30 @@ function logout() {
 
 function atualizarUsuario() {
 
-    const usuarioLogado =
-        localStorage.getItem("usuarioLogado");
+    const usuario = localStorage.getItem("usuarioLogado");
 
-    const campo =
-        document.getElementById("usuarioLogado");
+    const nome = document.getElementById("usuarioLogado");
 
-    if (!campo) return;
+    const loginButton = document.getElementById("btnLogin");
 
-    if (usuarioLogado) {
+    const logoutButton = document.getElementById("btnLogout");
 
-        campo.textContent = usuarioLogado;
+    if (usuario) {
 
-    } else {
+        nome.textContent = usuario;
 
-        campo.textContent = "Visitante";
+        loginButton.hidden =  true;
 
+        logoutButton.hidden = false;
+    }
+
+    else {
+
+        nome.textContent = "Visitante";
+
+        loginButton.hidden = false;
+
+        logoutButton.hidden = true;
     }
 
 }
@@ -85,3 +101,5 @@ function mostrarMensagem(id, texto) {
     }
 
 }
+
+document.addEventListener("DOMContentLoaded", atualizarUsuario);
