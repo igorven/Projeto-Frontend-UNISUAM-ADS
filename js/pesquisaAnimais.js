@@ -43,9 +43,14 @@ function filterAnimals() {
     });
 }
 
-search.addEventListener("input", filterAnimals);
+function botaoAdocao() {
 
-filter.addEventListener("change", filterAnimals);
+    const button = document.getElementById("confirmarAdocao");
+
+    const lista = JSON.parse(localStorage.getItem("queroAdotar")) || [];
+
+    button.hidden = lista.length === 0;
+}
 
 /* Quando o usuário clicar em "Quero Adotar", o seguinte código deverá ocorrer: */
 
@@ -60,18 +65,29 @@ function queroAdotar(animalName) {
         return;
     }
 
-    let lista = JSON.parse(localStorage.getItem("queroAdotar")) || [];
+    let escolhidos = JSON.parse(localStorage.getItem("queroAdotar")) || [];
 
-    if (lista.includes(animalName)) {
+    let adotados = JSON.parse(localStorage.getItem("adotados")) || [];
 
-        mostrarMensagem("mensagemQuero", "Animal já selecionado");
+    const alreadyExists = escolhidos.some(a => a.nome === animalName) || adotados.some(a=>a.nome === animalName);
+
+    if(alreadyExists) {
+
+        mostrarMensagem("mensagemQuero", "Esse animal já foi selecionado.")
 
         return;
     }
 
-    lista.push(animalName);
+    escolhidos.push({
 
-    localStorage.setItem("queroAdotar", JSON.stringify(lista));
+        nome: animalName,
+
+        usuario,
+
+        data: new Date().toLocaleDateString("pt-BR")
+    });
+
+    localStorage.setItem("queroAdotar", JSON.stringify(escolhidos));
 
     atualizarLista();
 }
@@ -83,15 +99,106 @@ function atualizarLista() {
     const lista = JSON.parse(localStorage.getItem("queroAdotar")) || []
 
     const ul = document.getElementById("listaQueroAdotar");
+    
+    const msg = document.getElementById("mensagemQuero");
 
     ul.innerHTML = "";
 
-    lista.forEach(animal => {
+    lista.forEach(a => {
 
         const li = document.createElement("li");
 
-        li.textContent = animal;
+        li.textContent = `${a.nome}(${a.data})`;
+
+        ul.appendChild(li);
+
+        msg.textContent = "";
+
+        botaoAdocao();
+    });
+}
+
+/* Confirma a adoção do animal */
+
+function confirmarAdocao() {
+
+    let lista = JSON.parse(localStorage.getItem("queroAdotar")) || [];
+
+    if (lista.length === 0) {
+
+        mostrarMensagem("mensagemQuero", "Nenhum animal selecionado");
+
+        return;
+    }
+
+    const confirmar = confirm("Deseja confirmar a adoção?");
+
+    if (!confirmar) {
+
+        return;
+    } 
+    let adotados = JSON.parse(localStorage.getItem("adotados")) || [];
+
+    adotados.push(...lista);
+
+    localStorage.setItem("adotados", JSON.stringify(adotados));
+
+    localStorage.removeItem("queroAdotar");
+
+    atualizarLista();
+
+    atualizarAdotados();
+
+    ocultarCards();
+}
+
+/* Atualiza a quantidade de animais adotados */
+
+function atualizarAdotados() {
+
+    const lista = JSON.parse(localStorage.getItem("adotados")) || [];
+
+    const ul = document.getElementById("listaAdotados");
+
+    ul.innerHTML = "";
+
+    lista.forEach(a => {
+
+        const li = document.createElement("li");
+
+        li.textContent = `${a.nome} - Adotado em ${a.data}`;
 
         ul.appendChild(li);
     });
 }
+
+/* Após o animais serem adotados, ocultar o card do animal em si */
+
+function ocultarCards() {
+
+    const adotados = JSON.parse(localStorage.getItem("adotados")) || [];
+
+    document.querySelectorAll(".card").forEach(card =>{
+
+        const nome = card.querySelector("h3").textContent;
+
+        const exists = adotados.some(a => a.nome === nome);
+
+        if (exists) {
+
+            card.style.display = "none";
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    atualizarLista();
+
+    atualizarAdotados();
+
+    ocultarCards();
+
+    botaoAdocao();
+
+});

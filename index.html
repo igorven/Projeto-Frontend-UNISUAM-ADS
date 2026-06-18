@@ -7,6 +7,7 @@
     <title>PetLar - Adoção de Animais</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/validaLogin.js"></script>
 </head>
 
 <body>
@@ -25,18 +26,21 @@
         
 
         <div class="acoes">
+
             <div class="menu">
+
                 <a href="#inicio">Início</a>
                 <a href="#adocao">Animais</a>
                 <a href="#queroAdotar">Quero Adotar</a>
                 <a href="#jaAdotados">Já Adotados</a>
                 <a href="#sobre">Sobre Nós</a>
                 <a href="#contato">Contato</a>
+
             </div>
             
             <span id="usuarioLogado">Visitante</span>
 
-            <button class="btn-login" onclick="window.location.href='pages/login.html'">
+            <button id="btnLogin" class="btn-login" onclick="window.location.href='pages/login.html'">
                 Login
             </button>
 
@@ -208,7 +212,7 @@
 
                 <div class="info">
                     <h3>Kiwi</h3>
-                    <p>Calopsita • 1 ano</p>
+                    <p>Guarda-rio • 1 ano</p>
 
                     <button class="btn-adotar" data-animal="Kiwi">
                         Quero Adotar
@@ -230,7 +234,7 @@
 
         <ul id="listaQueroAdotar"></ul>
 
-        <button id ="confirmarAdocao">Confirmar Adoção</button>
+        <button id="confirmarAdocao" onclick="confirmarAdocao()" hidden>Confirmar Adoção</button>
 
     </section>
 

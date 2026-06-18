@@ -229,7 +229,7 @@ if (existeCampoVazio) {
 
     usuario.push(novoUsuario);
 
-    localStorage.setItem("usuario", JSON.stringify(usuario));
+    localStorage.setItem("usuario", JSON.stringify(usuario)) || [];
 
     mostrarMensagem("Cadastro realizado com sucesso!");
 

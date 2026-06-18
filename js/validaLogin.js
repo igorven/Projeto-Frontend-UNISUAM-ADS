@@ -1,10 +1,17 @@
-document.getElementById("formCadastro").addEventListener("submit", (e) => {
-    e.preventDefault();
-});
+const form = document.getElementById("formCadastro");
+
+if (form) {
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        login();
+    });
+}
+
 
 function login() {
 
-    const login =
+    const email =
         document.getElementById("login").value;
 
     const senha =
@@ -13,20 +20,20 @@ function login() {
     const usuarios =
         JSON.parse(localStorage.getItem("usuario")) || [];
 
-    const usuarioEncontrado = usuarios.find(
-        u => u.email === login && u.senha === senha
+    const usuario = usuarios.find(
+        u => u.email === email && u.senha === senha
     );
 
-    if (!usuarioEncontrado) {
+    if (!usuario) {
 
         mostrarMensagem("mensagemQuero", "Nenhum usuário cadastrado.");
 
         return;
     }
 
-    if (usuarioEncontrado) {
+    if (usuario) {
 
-        localStorage.setItem("usuarioLogado", usuarioEncontrado.email);
+        localStorage.setItem("usuarioLogado", usuario.email);
 
         atualizarUsuario();
 
@@ -72,22 +79,17 @@ function atualizarUsuario() {
 
     const logoutButton = document.getElementById("btnLogout");
 
-    if (usuario) {
-
-        nome.textContent = usuario;
-
-        loginButton.hidden =  true;
-
-        logoutButton.hidden = false;
+    if (nome) {
+        nome.textContent = usuario || "Visitante";
     }
 
-    else {
+    if (loginButton) {
+        loginButton.hidden =
+        !!usuario
+    }
 
-        nome.textContent = "Visitante";
-
-        loginButton.hidden = false;
-
-        logoutButton.hidden = true;
+    if (logoutButton) {
+        logoutButton.hidden = !usuario
     }
 
 }
