@@ -26,20 +26,13 @@ function filterAnimals() {
 
     cards.forEach(card => {
 
-        const conteudo = card.textContent.toLowerCase();
+        const nome = card.querySelector("h3").textContent.toLowerCase();
 
-        const tipo = categoria === "todos" || card.classList.contains(categoria);
+        const categoriaOk = categoria === "todos" || card.classList.contains(categoria);
 
-        const found = conteudo.includes(texto);
+        const textoOk = nome.includes(texto);
 
-        if (found && tipo) {
-
-            card.style.display = "block";
-        }
-
-        else {
-            card.style.display = "none";
-        }
+        card.style.display = textoOk && categoriaOk ? "" : "none";
     });
 }
 
@@ -215,5 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ocultarCards();
 
     botaoAdocao();
+
+    filterAnimals();
 
 });
