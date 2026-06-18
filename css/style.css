@@ -298,6 +298,97 @@ section h2{
     margin-right:10px;
 }
 
+/* FORMULÁRIO DE ADOÇÃO */
+
+#modalAdocao{
+
+    display:none;
+    
+    position:fixed;
+    
+    top:0;
+    left:0;
+    
+    width:100vw;
+    height:100vh;
+    
+    background:rgba(0,0,0,.55);
+    
+    z-index:9999;
+    
+    justify-content:center;
+    
+    align-items:center;
+    
+    }
+    
+    #modalAdocao .cadastro-container{
+    
+    background:none;
+    
+    min-height:auto;
+    
+    padding:0;
+    
+    width:100%;
+    
+    display:flex;
+    
+    justify-content:center;
+    
+    align-items:center;
+    
+    }
+    
+    #modalAdocao .cadastro-card{
+    
+    width:min(90vw,700px);
+    
+    max-width:none;
+    
+    margin:auto;
+    
+    max-height:90vh;
+    
+    overflow-y:auto;
+    
+    }
+    
+    #modalAdocao textarea{
+    
+    width:100%;
+    
+    padding:10px;
+    
+    border:1px solid #ddd;
+    
+    border-radius:10px;
+    
+    min-height:120px;
+    
+    }
+    
+    #modalAdocao .modal-acoes{
+    
+    display:flex;
+    
+    gap:10px;
+    
+    }
+    
+    #modalAdocao .modal-acoes button{ 
+    
+    flex:1;
+    
+    }
+
+        #modalAdocao .modal-acoes{
+
+            display:flex;
+            
+            gap:10px;
+            }
+
 /* FOOTER */
 
 footer{
