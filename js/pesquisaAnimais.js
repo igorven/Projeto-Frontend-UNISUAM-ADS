@@ -67,9 +67,11 @@ function queroAdotar(animalName) {
 
     let escolhidos = JSON.parse(localStorage.getItem("queroAdotar")) || [];
 
-    let adotados = JSON.parse(localStorage.getItem("adotados")) || [];
+    const usuarios = JSON.parse(localStorage.getItem("usuario")) || [];
 
-    const alreadyExists = escolhidos.some(a => a.nome === animalName) || adotados.some(a=>a.nome === animalName);
+    const todosAdotados = usuarios.flatMap(u => u.adocoes || []);
+
+    const alreadyExists = escolhidos.some(a => a.nome === animalName) || todosAdotados.some(a=>a.nome === animalName);
 
     if(alreadyExists) {
 
@@ -122,57 +124,64 @@ function atualizarLista() {
 
 function confirmarAdocao() {
 
-    let lista = JSON.parse(localStorage.getItem("queroAdotar")) || [];
-
-    const msgAdotado = document.getElementById("mensagemAdotados");
+    const lista = JSON.parse(localStorage.getItem("queroAdotar")) || [];
 
     if (lista.length === 0) {
-
         mostrarMensagem("mensagemQuero", "Nenhum animal selecionado");
 
         return;
     }
+    
+    else {
+        mostrarMensagem("mensagemQuero", "");
+    }
 
-    const confirmar = confirm("Deseja confirmar a adoção?");
-
-    if (!confirmar) {
-
+    if (!confirm("Deseja confirmar?")) {
         return;
-    } 
-    let adotados = JSON.parse(localStorage.getItem("adotados")) || [];
+    }
 
-    adotados.push(...lista);
+    const usuarios = JSON.parse(localStorage.getItem("usuario")) || [];
 
-    localStorage.setItem("adotados", JSON.stringify(adotados));
+    const logado = localStorage.getItem("usuarioLogado");
+
+    const usuario = usuarios.find(u => u.email === logado);
+
+    if (usuario) {
+
+        usuario.adocoes.push(...lista);
+
+        localStorage.setItem("usuario", JSON.stringify(usuarios))
+    }
 
     localStorage.removeItem("queroAdotar");
-
-    msgAdotado.textContent = "";
 
     atualizarLista();
 
     atualizarAdotados();
 
     ocultarCards();
+
+    botaoAdocao();
 }
 
 /* Atualiza a quantidade de animais adotados */
 
 function atualizarAdotados() {
 
-    const lista = JSON.parse(localStorage.getItem("adotados")) || [];
+    const usuarios = JSON.parse(localStorage.getItem("usuario")) || [];
 
     const ul = document.getElementById("listaAdotados");
 
     ul.innerHTML = "";
 
-    lista.forEach(a => {
+    usuarios.forEach(u => {
+        (u.adocoes || []).forEach(a => {
+            const li = document.createElement("li");
 
-        const li = document.createElement("li");
+            li.textContent = `${a.nome} - adotado(a) por ${u.nome}`;
 
-        li.textContent = `${a.nome} - Adotado em ${a.data}`;
-
-        ul.appendChild(li);
+            ul.appendChild(li);
+        });
     });
 }
 
@@ -180,7 +189,9 @@ function atualizarAdotados() {
 
 function ocultarCards() {
 
-    const adotados = JSON.parse(localStorage.getItem("adotados")) || [];
+    const usuarios = JSON.parse(localStorage.getItem("usuario")) || [];
+
+    const adotados = usuarios.flatMap(u => u.adocoes || []);
 
     document.querySelectorAll(".card").forEach(card =>{
 

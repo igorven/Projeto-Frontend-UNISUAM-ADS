@@ -224,7 +224,8 @@ if (existeCampoVazio) {
         estado: estado.value,
         telefone: telefone.value,
         email: email.value,
-        senha: senha.value
+        senha: senha.value,
+        adocoes : []
     };
 
     usuario.push(novoUsuario);
