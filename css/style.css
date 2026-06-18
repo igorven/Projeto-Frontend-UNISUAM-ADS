@@ -1,11 +1,346 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(159, 160, 160);
-    background-size: cover;
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
 }
 
-label {
-    padding: 10px;
-                
+/* BODY */
 
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f5f5;
+    color:#333;
+    line-height: 1.6;
+}
+
+/* HEADER */
+
+header{
+    background:#4CAF50;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+header h1{
+    font-size:2.5rem;
+    margin-bottom:10px;
+}
+
+/* NAVBAR */
+
+nav{
+    background:#388E3C;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:15px 40px;
+
+    position:sticky;
+    top:0;
+
+    z-index:1000;
+}
+
+.logo{
+    color:white;
+    font-size:1.5rem;
+    font-weight:bold;
+}
+
+.menu{
+    display:flex;
+    gap:20px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.menu a:hover{
+    color:#dfffe0;
+}
+
+.acoes{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.btn-login{
+    background:white;
+    color:#388E3C;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-login:hover{
+    background:#c7c6c6;
+}
+
+.carrinho{
+    background:white;
+    color:#388E3C;
+    padding:8px 15px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+/* BANNER */
+
+.banner{
+
+    height:450px;
+
+    background-image:url(
+    "https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=1600"
+    );
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    color:white;
+
+    text-shadow:2px 2px 5px black;
+}
+
+.banner h2{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.banner p{
+    margin-bottom:20px;
+    font-size:1.2rem;
+}
+
+/* BOTÕES */
+
+.btn,
+button{
+
+    background:#4CAF50;
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.btn{
+    text-decoration:none;
+}
+
+.btn:hover,
+button:hover{
+    background:#2E7D32;
+}
+
+/* SEÇÕES */
+
+section{
+    padding:50px 10%;
+}
+
+section h2{
+    color:#2E7D32;
+    margin-bottom:20px;
+}
+
+/* FILTROS */
+
+.filtros{
+    display:flex;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.filtros input,
+.filtros select{
+
+    padding:12px;
+
+    border:1px solid #ccc;
+
+    border-radius:6px;
+}
+
+/* CARDS */
+
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.card{
+
+    background:white;
+
+    width:300px;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.info{
+    padding:20px;
+}
+
+.info h3{
+    margin-bottom:10px;
+}
+
+.info p{
+    margin-bottom:15px;
+}
+
+/* LISTAS */
+
+#adocoes,
+#carrinhoArea,
+#sobre,
+#contato{
+
+    background:white;
+
+    border-radius:10px;
+
+    margin-top:30px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+#listaAdocoes,
+#listaCarrinho{
+
+    list-style:none;
+
+    margin-top:15px;
+}
+
+#listaAdocoes li,
+#listaCarrinho li{
+
+    padding:10px;
+
+    border-bottom:1px solid #ddd;
+}
+
+/* LOGIN */
+
+#login{
+
+    background:white;
+
+    max-width:500px;
+
+    margin:40px auto;
+
+    padding:30px;
+
+    border-radius:10px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+#login input{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:15px;
+
+    border:1px solid #ccc;
+
+    border-radius:6px;
+}
+
+#login button{
+    margin-right:10px;
+}
+
+/* FOOTER */
+
+footer{
+
+    background:#2E7D32;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+    margin-top:40px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .acoes{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .cards{
+        justify-content:center;
+    }
+
+    .filtros{
+        flex-direction:column;
+    }
+
+    .banner h2{
+        font-size:2rem;
+    }
 }

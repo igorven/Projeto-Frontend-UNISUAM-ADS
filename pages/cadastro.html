@@ -1,11 +1,178 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Cadastro - PetLar</title>
+    <link rel="stylesheet" href="../css/cadastro.css">
 </head>
+
 <body>
-    
+
+    <div class="cadastro-container">
+
+        <div class="cadastro-card">
+
+            <h1>🐾 PetLar</h1>
+
+            <h2>Criar Conta</h2>
+
+            <p class="subtitulo">
+                Cadastre-se para adotar animais e acompanhar suas adoções.
+            </p>
+
+            <form id="formCadastro">
+
+                <!-- NOME -->
+
+                <div class="campo">
+
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome completo">
+
+                </div>
+
+                <!-- CPF E CEP -->
+
+                <div class="linha">
+
+                    <div class="campo">
+
+                        <label for="cpf">CPF</label>
+                        <input type="text" id="cpf" maxlength="14" placeholder="000.000.000-00">
+                        <small id="erroCpf" class="erro"></small>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" maxlength="9" placeholder="00000-000">
+                        <small id="erroCep" class="erro"></small>
+
+                    </div>
+
+                </div>
+
+                <!-- RUA -->
+
+                <div class="campo">
+
+                    <label for="rua">Rua</label>
+                    <input type="text" id="rua" readonly>
+
+                </div>
+
+                <!-- BAIRRO -->
+
+                <div class="campo">
+
+                    <label for="bairro"> Bairro</label>
+                    <input type="text"id="bairro" readonly>
+
+                </div>
+
+                <!-- CIDADE E ESTADO -->
+
+                <div class="linha">
+
+                    <div class="campo">
+
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade" readonly>
+                
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="estado">Estado</label>
+                        <input type="text" id="estado" readonly>
+                           
+                    </div>
+
+
+
+                </div>
+
+                <!-- COMPLEMENTO E NÚMERO -->
+
+                <div class="linha">
+
+                    <div class="campo">
+                        <label for="complemento">Complemento</label>
+                        <input type="text" id="complemento" placeholder="Apto, Casa, etc.">
+                    </div>
+
+                    <div class="campo">
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero" placeholder="Número da residência">
+                    </div>
+                </div>
+
+                <!-- TELEFONE E EMAIL -->
+
+                <div class="linha">
+
+                    <div class="campo">
+
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" placeholder="(00) 00000-0000">
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="seuemail@email.com">
+                    </div>
+
+                </div>
+
+                <!-- SENHAS -->
+
+                <div class="linha">
+
+                    <div class="campo">
+
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" placeholder="Digite sua senha"></div>
+
+                    <div class="campo">
+
+                        <label for="confirmarSenha">Confirmar Senha</label>
+                        <input type="password" id="confirmarSenha" placeholder="Confirme sua senha">
+
+                    </div>
+
+                </div>
+
+                <!-- MENSAGEM -->
+
+                <p id="mensagemCadastro" class="mensagem"></p>
+
+                <!-- BOTÃO -->
+
+                <button type="button" onclick="cadastrarUsuario()"> Criar Conta</button>
+
+            </form>
+
+            <p class="subtitulo">Já possui uma conta? <a href="login.html">Faça login por aqui</a></p>
+            <br><br><br><br>
+
+
+            <!-- VOLTAR -->
+
+            <div class="voltar">
+                <a href="../index.html"> ← Voltar para o PetLar</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../js/validaCadastro.js"></script>
+
 </body>
+
 </html>

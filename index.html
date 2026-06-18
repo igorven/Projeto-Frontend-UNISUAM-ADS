@@ -1,14 +1,283 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-BR">
 
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetLar - Adoção de Animais</title>
 
-    <body>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/validaLogin.js"></script>
+</head>
 
+<body>
+
+<header>
+    <h1>🐾 PetLar</h1>
+    <p>Encontre um amigo para a vida toda.</p>
+</header>
+
+    <nav>
+
+        <div class="logo">
+            🐾 PetLar
+        </div>
 
         
-    </body>
+
+        <div class="acoes">
+
+            <div class="menu">
+
+                <a href="#inicio">Início</a>
+                <a href="#adocao">Animais</a>
+                <a href="#queroAdotar">Quero Adotar</a>
+                <a href="#jaAdotados">Já Adotados</a>
+                <a href="#sobre">Sobre Nós</a>
+                <a href="#contato">Contato</a>
+
+            </div>
+            
+            <span id="usuarioLogado">Visitante</span>
+
+            <button id="btnLogin" class="btn-login" onclick="window.location.href='pages/login.html'">
+                Login
+            </button>
+
+            <button id="btnLogout" onclick="logout()" hidden>Sair</button>
+
+        </div>
+
+    </nav>
+
+
+
+<main>
+
+   
+
+    <section id="inicio" class="banner">
+
+        <div>
+
+            <h2>
+                Um novo amigo espera por você ❤️
+            </h2>
+
+            <p>
+                Adote, cuide e transforme vidas.
+            </p>
+
+            <a href="#adocao" class="btn">
+                Ver Animais
+            </a>
+
+        </div>
+
+    </section>
+
+    <section id="adocao">
+
+        <h2>Animais Disponíveis</h2>
+
+        <div class="filtros">
+
+            <input type="text" id="pesquisa" placeholder="Pesquisar animal...">
+
+            <select id="filtro">
+
+                <option value="todos">Todos</option>
+                <option value="cachorro">Cachorros</option>
+                <option value="gato">Gatos</option>
+                <option value="outro">Outros</option>
+
+            </select>
+
+        </div>
+
+        <div class="cards">
+
+            <!-- CACHORROS -->
+
+            <article class="card cachorro">
+                <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600" alt="Thor" loading="lazy">
+
+                <div class="info">
+                    <h3>Thor</h3>
+                    <p>2 anos • Porte Médio • Vacinado</p>
+
+                    <button class="btn-adotar" data-animal="Thor">
+                        Quero Adotar
+                    </button>
+                </div>
+            </article>
+
+            <article class="card cachorro">
+                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600" alt="Mel" loading="lazy">
+
+                <div class="info">
+                    <h3>Mel</h3>
+                    <p>3 anos • Porte Pequeno • Dócil</p>
+
+                    <button class="btn-adotar" data-animal="Mel">
+                        Quero Adotar
+                    </button>
+                </div>
+            </article>
+
+            <article class="card cachorro">
+                <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=600" alt="Max" loading="lazy">
+
+                <div class="info">
+                    <h3>Max</h3>
+                    <p>4 anos • Porte Grande • Vacinado</p>
+
+                    <button class="btn-adotar" data-animal="Max">
+                        Quero Adotar
+                    </button>
+                </div>
+            </article>
+
+            <article class="card cachorro">
+                <img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?w=600" alt="Rex" loading="lazy">
+
+                <div class="info">
+                    <h3>Rex</h3>
+                    <p>2 anos • Muito brincalhão</p>
+
+                    <button class="btn-adotar" data-animal="Rex">
+                        Quero Adotar
+                    </button>
+                </div>
+            </article>
+
+            <!-- GATOS -->
+
+            <article class="card gato">
+                <img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=600" alt="Luna" loading="lazy">
+
+                <div class="info">
+                    <h3>Luna</h3>
+                    <p>1 ano • Castrada • Carinhosa</p>
+
+                    <button class="btn-adotar" data-animal="Luna">
+                        Quero Adotar
+                    </button>
+                </div>
+            </article>
+
+            <article class="card gato">
+                <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=600" alt="Mimi" loading="lazy">
+
+                <div class="info">
+                    <h3>Mimi</h3>
+                    <p>2 anos • Brincalhona • Vacinada</p>
+
+                    <button class="btn-adotar" data-animal="Mimi">
+                        Quero Adotar
+                    </button>
+                </div>
+            </article>
+
+            <article class="card gato">
+                <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600" alt="Snow" loading="lazy">
+
+                <div class="info">
+                    <h3>Snow</h3>
+                    <p>1 ano • Castrado</p>
+
+                    <button class="btn-adotar" data-animal="Snow">
+                        Quero Adotar
+                    </button>
+                </div>
+            </article>
+
+            <!-- OUTROS -->
+
+            <article class="card outro">
+                <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=600" alt="Bolinha" loading="lazy">
+
+                <div class="info">
+                    <h3>Bolinha</h3>
+                    <p>Coelho • 1 ano</p>
+
+                    <button class="btn-adotar" data-animal="Bolinha">
+                        Quero Adotar
+                    </button>
+                </div>
+            </article>
+
+            <article class="card outro">
+                <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?w=600" alt="Kiwi" loading="lazy">
+
+                <div class="info">
+                    <h3>Kiwi</h3>
+                    <p>Guarda-rio • 1 ano</p>
+
+                    <button class="btn-adotar" data-animal="Kiwi">
+                        Quero Adotar
+                    </button>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section id="queroAdotar">
+
+        <h2>🐾 Quero Adotar</h2>
+
+        <p id="mensagemQuero">
+            Nenhum animal selecionado.
+        </p>
+
+        <ul id="listaQueroAdotar"></ul>
+
+        <button id="confirmarAdocao" onclick="confirmarAdocao()" hidden>Confirmar Adoção</button>
+
+    </section>
+
+    <section id="jaAdotados">
+
+        <h2>❤️ Animais Já Adotados</h2>
+
+        <p id="mensagemAdotados">
+            Nenhum animal adotado.
+        </p>
+
+        <ul id="listaAdotados"></ul>
+
+    </section>
+
+    <section id="sobre">
+
+        <h2>Sobre Nós</h2>
+
+        <p>
+            O PetLar conecta animais que precisam de um lar
+            com pessoas dispostas a oferecer amor e cuidado.
+        </p>
+
+    </section>
+
+    <section id="contato">
+
+        <h2>Contato</h2>
+
+        <p>Email: <a href="mailto:contato@petlar.com">contato@petlar.com</a></p>
+
+        <p>Telefone: <a href="tel:+5521999999999">(21) 99999-9999</a></p>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 PetLar - Todos os direitos reservados.</p>
+</footer>
+
+<script src="js/pesquisaAnimais.js"></script>
+
+</body>
 </html>
