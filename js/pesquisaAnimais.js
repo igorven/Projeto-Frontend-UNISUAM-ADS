@@ -124,6 +124,8 @@ function confirmarAdocao() {
 
     let lista = JSON.parse(localStorage.getItem("queroAdotar")) || [];
 
+    const msgAdotado = document.getElementById("mensagemAdotados");
+
     if (lista.length === 0) {
 
         mostrarMensagem("mensagemQuero", "Nenhum animal selecionado");
@@ -144,6 +146,8 @@ function confirmarAdocao() {
     localStorage.setItem("adotados", JSON.stringify(adotados));
 
     localStorage.removeItem("queroAdotar");
+
+    msgAdotado.textContent = "";
 
     atualizarLista();
 
